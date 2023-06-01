@@ -1,0 +1,6 @@
+node -v > .nvmrc -> Salva as versões usadas para aquele projeto
+nvm -v -> lista a versão do node
+nvm list -> lista as versões instaladas do node
+nvm use xx -> altera a versão do node para a desejada 
+nvm install xx -> instala a versão desejada do node
+nvm alias default xx -> torna a versão desejada como a padrão
