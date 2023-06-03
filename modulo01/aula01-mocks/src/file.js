@@ -53,6 +53,12 @@ class File {
             const user = {}
             for (let index in columns) {
                 user[header[index]] = columns[index].trim()
+
+                /*
+                const key = headers[index];
+                const value = columns[index].trim;
+                user[key] = value;
+                */
             }
             return user;
         })
