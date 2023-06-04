@@ -14,3 +14,5 @@ class Service {
 }
 
 module.exports = Service
+
+// npm i -D sinon@15.0.1
