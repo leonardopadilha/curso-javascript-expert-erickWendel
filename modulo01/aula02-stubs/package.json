@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "node src/service.test.js"
+    "test": "node src/service.test.js",
+    "pet": "node src/petStore.test.js"
   },
   "engines": {
     "node": "18"
