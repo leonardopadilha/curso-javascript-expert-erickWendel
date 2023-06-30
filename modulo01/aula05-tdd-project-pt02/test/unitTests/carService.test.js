@@ -1,6 +1,6 @@
 /*instalações: 
-npm i -D mocha@8 nyc@15 sinon@9
-npm i -D chai@4
+//npm i -D mocha@8 nyc@15 sinon@9
+//npm i -D chai@4
 */
 
 const { describe, it, before, beforeEach, afterEach } = require('mocha')
