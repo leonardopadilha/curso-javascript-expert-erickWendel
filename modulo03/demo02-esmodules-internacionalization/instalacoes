@@ -1,0 +1,2 @@
+npm i draftlog@1 chalk@4 chalk-table@1
+npm i -D nodemon
