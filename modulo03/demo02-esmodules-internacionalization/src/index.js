@@ -1,7 +1,9 @@
 
-import database from './../database.json' //assert {type: "json"}
+import database from './../database.json' assert {type: "json"}
 import Person from "./person.js"
 import TerminalController from "./terminalController.js"
+
+import { save } from './repository.js'
 
 const DEFAULT_LANG = "pt-BR"
 const STOP_TERM = ":q"
@@ -22,6 +24,9 @@ async function mainLoop() {
 
         const person = Person.generateInstanceFromString(answer)
         console.log('person', person.formatted(DEFAULT_LANG))
+        terminalController.updateTable(person.formatted(DEFAULT_LANG))
+        
+        await save(person)
         return mainLoop()
    
     } catch (error) {
