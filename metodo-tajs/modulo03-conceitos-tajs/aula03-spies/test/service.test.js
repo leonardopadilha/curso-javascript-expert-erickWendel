@@ -35,7 +35,7 @@ describe('Service Test Suite', () => {
         it('should call appendFile with right params', async () => {
             // AAA - Arrange, Act, Assert
             const input = {
-                username: 'user',
+                username: 'user1',
                 password: 'passs1'
             }
 
