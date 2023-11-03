@@ -9,3 +9,5 @@ const pdf = require('pdf-parse')
     const data = await pdf(dabatBuffer)
     console.log('data', data.text)
 }) ()
+
+//npm start | tee text.txt --> Ciar o text.txt
