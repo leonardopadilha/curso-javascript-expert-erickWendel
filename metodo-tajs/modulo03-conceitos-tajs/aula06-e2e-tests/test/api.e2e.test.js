@@ -117,5 +117,18 @@ describe('E2E Test Suite', () => {
             const data = await response.json()
             expect(data.result).toEqual('ok')
         })
+
+        it('should return 500 for register', async () => {
+            const invalidPerson = { "cpf": '12312312312', "name": 'Xuxa'}
+
+            const response = await fetch(`${_testSeverAddress}/persons`, {
+                method: 'POST',
+                body: JSON.stringify(invalidPerson)
+            })
+
+            expect(response.status).toBe(500)
+            let message =  "Cannot save invalid person: {\"cpf\":\"12312312312\",\"name\":\"Xuxa\"}"
+            expect(() => Person.save(invalidPerson)).toThrow(new Error(message))
+        })
     })
 })
