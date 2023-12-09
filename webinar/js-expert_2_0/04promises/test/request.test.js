@@ -15,7 +15,19 @@ describe('Request helpers', () => {
 
     afterEach(() => sandbox.restore() )
 
-    it(`should throw a timeout error when the function has spent more than ${timeout}ms`)
-    it('should return ok when promise time is ok')
-    it('should return a JSON object after a request')
+    it(`should throw a timeout error when the function has spent more than ${timeout}ms`, async () => {
+        const exceededTimeout = timeout + 10
+        sandbox.stub(request,
+                     request.get.name).callsFake(() => new Promise(r => setTimeout(r, exceededTimeout)))
+
+        const call = request.makeRequest(
+            {
+                url: 'https://testing.com',
+                method: 'get',
+                timeout
+            }
+        )
+
+        await assert.rejects(call, { message: 'timeout at [https://testing.com] :(' })
+    })
 })
