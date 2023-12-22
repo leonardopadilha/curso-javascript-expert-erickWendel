@@ -1,3 +1,4 @@
+const https = require('https')
 
 class Request {
 
@@ -10,7 +11,15 @@ class Request {
     }
 
     async get(url) {
-
+        return new Promise((resolve, reject) => {
+            https.get(url, res => {
+                const items = []
+                res
+                    .on('data', data => items.push(data))
+                    .on("end", () => resolve(JSON.parse(items.join(""))))
+            })
+                .on("error", reject)
+        })
     }
 
     async makeRequest({ url, method, timeout }) {
