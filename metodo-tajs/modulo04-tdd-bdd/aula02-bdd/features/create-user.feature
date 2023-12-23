@@ -24,7 +24,7 @@ Feature: Create Users API
 
     When I create a new user with the following details 2:
       | name     | birthDay   |
-      | Jane     | 1980-01-01 |
+      | Souza     | 1980-01-01 |
     Then the user should be categorized as an "Adult"
     When I request the user with ID "2"
     Then I should receive a JSON response with the user's details

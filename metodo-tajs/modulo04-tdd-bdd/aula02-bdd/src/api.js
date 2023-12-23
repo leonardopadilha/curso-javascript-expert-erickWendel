@@ -1,11 +1,10 @@
 import { randomUUID } from 'node:crypto';
 import { once } from 'node:events';
 import { createServer } from 'node:http'
-const usersDB = []
+const usersDb = []
 
 function getUserCategory(birthDay) {
     const age = new Date().getFullYear() - new Date(birthDay).getFullYear()
-
     if (age < 18) {
         throw new Error('User must be 18yo or older')
     }
@@ -14,15 +13,13 @@ function getUserCategory(birthDay) {
         return 'young-adult'
     }
 
-    if (age <= 50) {
-        return 'adult'
-    }
-
-    return 'senior'
+    return ''
 }
 
 const server = createServer(async (request, response) => {
     try {
+
+
         if (request.url === '/users' && request.method === 'POST') {
             const user = JSON.parse(await once(request, 'data'))
             const updatedUser = {
@@ -30,7 +27,7 @@ const server = createServer(async (request, response) => {
                 id: randomUUID(),
                 category: getUserCategory(user.birthDay)
             }
-            usersDB.push(updatedUser)
+            usersDb.push(updatedUser)
             response.writeHead(201, {
                 'Content-Type': 'application/json'
             })
@@ -41,14 +38,14 @@ const server = createServer(async (request, response) => {
         }
 
         if (request.url.startsWith('/users') && request.method === 'GET') {
-            const [,, id] = request.url.split('/')
-            const user = usersDB.find(user => user.id === id)
+            const [, , id] = request.url.split('/')
+            const user = usersDb.find(user => user.id === id)
 
             response.end(JSON.stringify(user))
             return;
         }
-    } catch(error) {
-        if (error.message.includes('18yo')) {
+    } catch (error) {
+        if(error.message.includes('18yo')) {
             response.writeHead(400, {
                 'Content-Type': 'application/json'
             })
@@ -57,12 +54,10 @@ const server = createServer(async (request, response) => {
             }))
             return;
         }
-
         response.writeHead(500)
         response.end('deu ruim!!')
     }
-
-    response.end('Hello World!')
+    response.end('hello world!')
 })
 
 export { server }
