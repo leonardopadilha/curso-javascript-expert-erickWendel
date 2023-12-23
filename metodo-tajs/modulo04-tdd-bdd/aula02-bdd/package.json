@@ -10,7 +10,7 @@
     "test:debug": "node --watch --inspect-brk node_modules/.bin/cucumber-js  --format progress --format html:cucumber-report.html"
   },
   "keywords": [],
-  "author": "erickwendel",
+  "author": "leo",
   "license": "ISC",
   "type": "module",
   "engines": {
