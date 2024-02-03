@@ -5,7 +5,7 @@ export default class Service {
     #heroesTable
     constructor(dbname) {
         const db = new lokijs(dbname)
-        this.#heroesTable = db.addCollection('characteres')
+        this.#heroesTable = db.addCollection('characters')
     }
 
     createHero(hero) {
