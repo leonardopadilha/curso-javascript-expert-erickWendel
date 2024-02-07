@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1707330789241" clover="3.2.0">
-  <project timestamp="1707330789242" name="All files">
+<coverage generated="1707332624534" clover="3.2.0">
+  <project timestamp="1707332624534" name="All files">
     <metrics statements="19" coveredstatements="19" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1" elements="22" coveredelements="22" complexity="0" loc="19" ncloc="19" packages="1" files="1" classes="1"/>
     <file name="runner.js" path="/mnt/c/Users/user/Desktop/javascript_expert/metodo-tajs/modulo06/aula02-web-integration-nock/src/runner.js">
       <metrics statements="19" coveredstatements="19" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
