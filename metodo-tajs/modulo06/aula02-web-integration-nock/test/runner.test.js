@@ -11,11 +11,33 @@ import page02Fixture from './fixtures/get-page02.json';
 import nock from 'nock'
 
 describe('Web Integation Test Suite', () => {
-    it('Should return API without mock', async () => {
+    it.skip('Should return API without mock', async () => {
         const pag10 = await fetchAPByPage(10);
         expect(pag10[0].id).toStrictEqual(181)
         expect(pag10[0].name).toEqual("Jessica's Friend")
         expect(pag10[0].image).toEqual('https://rickandmortyapi.com/api/character/avatar/181.jpeg')
         //console.log("page10::::::::", pag10[0].id)
+    })
+
+    it('Should return the right object with right properties 01', async () => {
+        const scope = nock('https://rickandmortyapi.com/api')
+                            .get('/character/')
+                            .query({ page: 1 })
+                            .reply(
+                                200,
+                                page01Fixture
+                        )
+
+        const page01 = await fetchAPByPage();
+        expect(page01).toEqual(
+            [
+                {
+                    "id": 1,
+                    "name": "Rick Sanchez",
+                    "image": "https://rickandmortyapi.com/api/character/avatar/1.jpeg"
+                }
+            ]
+        )
+        scope.done()
     })
 })
