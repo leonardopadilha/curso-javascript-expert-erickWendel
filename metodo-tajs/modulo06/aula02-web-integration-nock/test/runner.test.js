@@ -40,4 +40,26 @@ describe('Web Integation Test Suite', () => {
         )
         scope.done()
     })
+
+    it('Should return the right object with right properties 02', async () => {
+        const scope = nock('https://rickandmortyapi.com/api')
+                            .get('/character/')
+                            .query({ page: 2 })
+                            .reply(
+                                200,
+                                page02Fixture
+                        )
+
+        const page02 = await fetchAPByPage(2);
+        expect(page02).toEqual(
+            [
+                {
+                    "id": 21,
+                    "name": "Aqua Morty",
+                    "image": "https://rickandmortyapi.com/api/character/avatar/21.jpeg"
+                }
+            ]
+        )
+        scope.done()
+    })
 })
