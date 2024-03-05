@@ -1,0 +1,14 @@
+// tudo começou com: node inspect index.mjs
+
+list(100)
+setBreakpoint(13)
+cont
+setBreakpoint(14)
+cont
+exec req
+exec req.url
+exec new URLSearchParams(req.url)
+exec new URLSearchParams(req.url).get('salary')
+exec new URLSearchParams(req.url).get('discount')
+exec new URLSearchParams(req.url).get('/salary')
+exec new URLSearchParams(req.url).get('/?salary')
